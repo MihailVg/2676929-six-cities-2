@@ -21,7 +21,7 @@ export abstract class BaseController implements IController {
   }
 
   public addRoute(route: IRoute): void {
-    const wrapperAsyncHandler = asyncHandler(route.handler.bind(this))
+    const wrapperAsyncHandler = asyncHandler(route.handler.bind(this));
     this._router[route.method](route.path, wrapperAsyncHandler);
     this.logger.info(
       `Route registered: ${route.method.toUpperCase()} ${route.path}`

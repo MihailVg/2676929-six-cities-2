@@ -8,7 +8,7 @@ export class CreateOfferDto {
   previewImageLink: string;
   offerImages: string[];
   isPremium: boolean;
-  isFavorite: boolean
+  isFavorite: boolean;
   type: OfferType;
   roomsAmount: number;
   guestsAmount: number;
