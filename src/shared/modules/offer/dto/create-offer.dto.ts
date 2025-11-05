@@ -8,13 +8,12 @@ export class CreateOfferDto {
   previewImageLink: string;
   offerImages: string[];
   isPremium: boolean;
-  isFavorite: boolean;
+  isFavorite: boolean
   type: OfferType;
   roomsAmount: number;
   guestsAmount: number;
   price: number;
   facilities: Facilities[];
   authorId: string;
-  commentsLength: number;
   coordinates: ICoordinates;
 }

@@ -4,6 +4,8 @@ import { Component } from '../../types/component.enum.js';
 import { DefaultCommentService } from './default-comment.service.js';
 import { types } from '@typegoose/typegoose';
 import { CommentEntity, CommentModel } from './comment.entity.js';
+import { IController } from '../../libs/rest/controller/controller.interface.js';
+import { CommentController } from './comment.controller.js';
 
 export function createCommentContainer() {
   const commentContainer = new Container();
@@ -12,10 +14,13 @@ export function createCommentContainer() {
     .bind<ICommentService>(Component.CommentService)
     .to(DefaultCommentService)
     .inSingletonScope();
-
   commentContainer
     .bind<types.ModelType<CommentEntity>>(Component.CommentModel)
     .toConstantValue(CommentModel);
+  commentContainer
+    .bind<IController>(Component.CommentController)
+    .to(CommentController)
+    .inSingletonScope();
 
   return commentContainer;
 }

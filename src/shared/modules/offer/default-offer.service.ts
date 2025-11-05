@@ -53,9 +53,13 @@ export class DefaultOfferService implements IOfferService {
         {
           $lookup: {
             from: 'users',
-            localField: 'authorId',
-            foreignField: '_id',
+            let: { authorId: '$authorId' },
             pipeline: [
+              {
+                $match: {
+                  $expr: { $eq: ['$_id', '$$authorId'] },
+                },
+              },
               {
                 $project: {
                   email: 1,
@@ -104,10 +108,21 @@ export class DefaultOfferService implements IOfferService {
         {
           $lookup: {
             from: 'users',
-            localField: 'authorId',
-            foreignField: '_id',
+            let: { authorId: '$authorId' },
             pipeline: [
-              { $project: { email: 1, name: 1, isPro: 1, profileImage: 1 } },
+              {
+                $match: {
+                  $expr: { $eq: ['$_id', '$$authorId'] },
+                },
+              },
+              {
+                $project: {
+                  email: 1,
+                  name: 1,
+                  isPro: 1,
+                  profileImage: 1,
+                },
+              },
             ],
             as: 'author',
           },
