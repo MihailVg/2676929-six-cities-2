@@ -15,6 +15,5 @@ export class CreateOfferDto {
   price: number;
   facilities: Facilities[];
   authorId: string;
-  commentsLength: number;
   coordinates: ICoordinates;
 }

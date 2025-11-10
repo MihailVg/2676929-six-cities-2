@@ -71,8 +71,6 @@ export class ImportCommand implements ICommand {
       roomsAmount: offer.roomsAmount,
       guestsAmount: offer.guestsAmount,
       city: offer.city,
-      commentsLength: offer.commentsLength,
-      rating: offer.rating,
       type: offer.type,
       postDate: offer.postDate,
       facilities: offer.facilities,
